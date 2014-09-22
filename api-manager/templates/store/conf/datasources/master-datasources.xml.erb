@@ -1,0 +1,275 @@
+<datasources-configuration xmlns:svns="http://org.wso2.securevault/configuration">
+
+    <providers>
+        <provider>org.wso2.carbon.ndatasource.rdbms.RDBMSDataSourceReader</provider>
+    </providers>
+
+    <datasources>
+        <% if @db_type=="mysql" %>
+        <datasource>
+            <name>WSO2_CARBON_DB</name>
+            <description>The datasource used for registry and user manager</description>
+            <jndiConfig>
+                <name>jdbc/WSO2CarbonDB</name>
+            </jndiConfig>
+            <definition type="RDBMS">
+                <configuration>
+                    <url>jdbc:h2:repository/database/WSO2CARBON_DB;DB_CLOSE_ON_EXIT=FALSE</url>
+                    <username>wso2carbon</username>
+                    <password>wso2carbon</password>
+                    <driverClassName>org.h2.Driver</driverClassName>
+                    <maxActive>50</maxActive>
+                    <maxWait>60000</maxWait>
+                    <testOnBorrow>true</testOnBorrow>
+                    <validationQuery>SELECT 1</validationQuery>
+                    <validationInterval>30000</validationInterval>
+                </configuration>
+            </definition>
+        </datasource>
+
+     <datasource>
+ 		<name>WSO2AM_DB</name>
+ 		<description>The datasource used for the API Manager database</description>
+ 		<jndiConfig>
+   			<name>jdbc/WSO2AM_DB</name>
+		 </jndiConfig>
+ 		<definition type="RDBMS">
+   		<configuration>
+     		<url>jdbc:mysql://<%= @mysql_server %>:<%= @mysql_port%>/<%= @apim_db_name%>?autoReconnect=true</url> 
+                    <username><%= @apim_db_username %></username> 
+                    <password><%= @apim_db_password %></password> 
+     		<defaultAutoCommit>false</defaultAutoCommit>
+     		<driverClassName>com.mysql.jdbc.Driver</driverClassName>
+     		<maxActive>50</maxActive>
+     		<maxWait>60000</maxWait>
+     		<testOnBorrow>true</testOnBorrow>
+     		<validationQuery>SELECT 1</validationQuery>
+     		<validationInterval>30000</validationInterval>
+   		</configuration>
+ 	 	</definition>
+	</datasource>
+	
+	<datasource>
+		 <name>WSO2UM_DB</name>
+		 <description>The datasource used by user manager</description>
+		 <jndiConfig>
+		   <name>jdbc/WSO2UM_DB</name>
+		 </jndiConfig>
+		 <definition type="RDBMS">
+		   <configuration>
+		     <url>jdbc:mysql://<%= @mysql_server %>:<%= @mysql_port%>/<%= @users_mgt_db_name%>?autoReconnect=true</url> 
+		     <username><%= @usermgt_db_username %></username>
+		     <password><%= @usermgt_db_password %></password>
+		     <defaultAutoCommit>false</defaultAutoCommit>
+		     <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+		     <maxActive>50</maxActive>
+		     <maxWait>60000</maxWait>
+		     <testOnBorrow>true</testOnBorrow>
+		     <validationQuery>SELECT 1</validationQuery>
+		     <validationInterval>30000</validationInterval>
+		   </configuration>
+		 </definition>
+	</datasource>
+	
+	<datasource>
+		 <name>WSO2REG_DB</name>
+		 <description>The datasource used by user manager</description>
+		 <jndiConfig>
+		   <name>jdbc/WSO2REG_DB</name>
+		 </jndiConfig>
+		 <definition type="RDBMS">
+		   <configuration>
+		     <url>jdbc:mysql://<%= @mysql_server %>:<%= @mysql_port%>/<%= @registry_db_name%>?autoReconnect=true</url>
+		     <username><%= @registry_db_username %></username>
+		     <password><%= @registry_db_password %></password>
+		     <defaultAutoCommit>false</defaultAutoCommit>
+		     <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+		     <maxActive>50</maxActive>
+		     <maxWait>60000</maxWait>
+		     <testOnBorrow>true</testOnBorrow>
+		     <validationQuery>SELECT 1</validationQuery>
+		     <validationInterval>30000</validationInterval>
+		   </configuration>
+		 </definition>
+	</datasource>
+	
+	<datasource>
+		 <name>WSO2CONFIGREG_DB</name>
+		 <description>The datasource used by user manager</description>
+		 <jndiConfig>
+		   <name>jdbc/WSO2CONFIGREG_DB</name>
+		 </jndiConfig>
+		 <definition type="RDBMS">
+		   <configuration>
+		     <url>jdbc:mysql://<%= @mysql_server %>:<%= @mysql_port%>/<%= @config_registry_db_name %>?autoReconnect=true</url>
+		     <username><%= @config_db_username %></username>
+                     <password><%= @config_db_password %></password>
+		     <defaultAutoCommit>false</defaultAutoCommit>
+		     <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+		     <maxActive>50</maxActive>
+		     <maxWait>60000</maxWait>
+		     <testOnBorrow>true</testOnBorrow>
+		     <validationQuery>SELECT 1</validationQuery>
+		     <validationInterval>30000</validationInterval>
+		   </configuration>
+		 </definition>
+	</datasource>
+	
+	<datasource>
+		 <name>WSO2AM_STATS_DB</name>
+		 <description>The datasource used by user manager</description>
+		 <jndiConfig>
+		   <name>jdbc/WSO2AM_STATS_DB</name>
+		 </jndiConfig>
+		 <definition type="RDBMS">
+		   <configuration>
+		     <url>jdbc:mysql://<%= @mysql_server %>:<%= @mysql_port%>/<%= @stat_registry_db_name %>?autoReconnect=true</url>
+		     <username><%= @stat_db_username %></username>
+                     <password><%= @stat_db_password %></password>
+		     <defaultAutoCommit>false</defaultAutoCommit>
+		     <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+		     <maxActive>50</maxActive>
+		     <maxWait>60000</maxWait>
+		     <testOnBorrow>true</testOnBorrow>
+		     <validationQuery>SELECT 1</validationQuery>
+		     <validationInterval>30000</validationInterval>
+		   </configuration>
+		 </definition>
+	</datasource>
+	<% end %><% if @db_type=="oracle" %>
+	<datasource>
+            <name>WSO2REG_DB</name>
+            <description>The datasource used for API Manager database</description>
+            <jndiConfig>
+                <name>jdbc/WSO2REG_DB</name>
+            </jndiConfig>
+               <definition type="RDBMS">
+                <configuration>
+                     <url>jdbc:oracle:thin:@<%= @oracle_server %>:<%= @oracle_port%>/<%= @registry_db_name%></url>
+                     <username><%= @registry_db_username%></username>
+                     <password><%= @registry_db_password%></password>
+                     <driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
+                     <defaultAutoCommit>false</defaultAutoCommit>
+                     <maxActive>50</maxActive>
+                     <maxWait>60000</maxWait>
+                     <testOnBorrow>false</testOnBorrow>
+                     <validationQuery>SELECT 1</validationQuery>
+                     <validationInterval>30000</validationInterval>
+                </configuration>
+              </definition>
+         </datasource>
+
+        <datasource>
+            <name>WSO2UM_DB</name>
+            <description>The datasource used for API Manager database</description>
+            <jndiConfig>
+                <name>jdbc/WSO2UM_DB</name>
+            </jndiConfig>
+             <definition type="RDBMS">
+                <configuration>
+                     <url>jdbc:oracle:thin:@<%= @oracle_server %>:<%= @oracle_port%>/<%= @users_mgt_db_name %></url>
+                     <username><%= @usermgt_db_username %></username>
+                     <password><%= @usermgt_db_password %></password>
+                     <driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
+                     <defaultAutoCommit>false</defaultAutoCommit>
+                     <maxActive>50</maxActive>
+                     <maxWait>60000</maxWait>
+                     <testOnBorrow>false</testOnBorrow>
+                     <validationQuery>SELECT 1</validationQuery>
+                     <validationInterval>30000</validationInterval>
+                </configuration>
+            </definition>
+        </datasource>       
+
+      <datasource>
+            <name>WSO2_CARBON_DB</name>
+            <description>The datasource used for registry and user manager</description>
+            <jndiConfig>
+                <name>jdbc/WSO2CarbonDB</name>
+            </jndiConfig>
+            <definition type="RDBMS">
+                <configuration>
+                    jdbc:h2:repository/database/WSO2CARBON_DB;DB_CLOSE_ON_EXIT=FALSE
+                    <username>wso2carbon</username>
+                    <password>wso2carbon</password>
+                    <driverClassName>org.h2.Driver</driverClassName>
+                    <maxActive>50</maxActive>
+                    <maxWait>60000</maxWait>
+                    <testOnBorrow>true</testOnBorrow>
+                    <validationQuery>SELECT 1</validationQuery>
+                    <validationInterval>30000</validationInterval>
+                </configuration>
+            </definition>
+        </datasource>
+
+          <datasource>
+            <name>WSO2CONFIGREG_DB</name>
+            <description>The datasource used for API Manager database</description>
+            <jndiConfig>
+                <name>jdbc/WSO2CONFIGREG_DB</name>
+            </jndiConfig>
+            <definition type="RDBMS">
+                <configuration>
+                     <url>jdbc:oracle:thin:@<%= @oracle_server %>:<%= @oracle_port%>/<%= @config_registry_db_name %></url>
+                     <username><%= @config_db_username %></username>
+                     <password><%= @config_db_password %></password>
+                     <driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
+                     <defaultAutoCommit>false</defaultAutoCommit>
+                     <maxActive>50</maxActive>
+                     <maxWait>60000</maxWait>
+                     <testOnBorrow>false</testOnBorrow>
+                     <validationQuery>SELECT 1</validationQuery>
+                     <validationInterval>30000</validationInterval>
+                </configuration>
+            </definition>
+        </datasource>
+
+         <datasource>
+            <name>WSO2AM_STATS_DB</name>
+            <description>The datasource used for API Manager database</description>
+            <jndiConfig>
+                <name>jdbc/WSO2AM_STATS_DB</name>
+            </jndiConfig>
+             <definition type="RDBMS">
+                <configuration>
+                     <url>jdbc:oracle:thin:@<%= @oracle_server %>:<%= @oracle_port%>/<%= @stat_registry_db_name %></url>
+                     <username><%= @stat_db_username %></username>
+                     <password><%= @stat_db_password %></password>
+                     <driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
+                     <defaultAutoCommit>false</defaultAutoCommit>
+                     <maxActive>50</maxActive>
+                     <maxWait>60000</maxWait>
+                     <testOnBorrow>false</testOnBorrow>
+                     <validationQuery>SELECT 1</validationQuery>
+                     <validationInterval>30000</validationInterval>
+                </configuration>
+            </definition>
+       </datasource>
+        
+	<datasource>
+            <name>WSO2AM_DB</name>
+            <description>The datasource used for API Manager database</description>
+            <jndiConfig>
+                <name>jdbc/WSO2AM_DB</name>
+            </jndiConfig>
+             <definition type="RDBMS">
+                <configuration>
+                     <url>jdbc:oracle:thin:@<%= @oracle_server %>:<%= @oracle_port%>/<%= @apim_db_name %></url>
+                     <username><%= @apim_db_username %></username>
+                     <password><%= @apim_db_password %></password>
+                     <driverClassName>oracle.jdbc.driver.OracleDriver</driverClassName>
+                     <defaultAutoCommit>false</defaultAutoCommit>
+                     <maxActive>50</maxActive>
+                     <maxWait>60000</maxWait>
+                     <testOnBorrow>false</testOnBorrow>
+                     <validationQuery>SELECT 1</validationQuery>
+                     <validationInterval>30000</validationInterval>
+                </configuration>
+            </definition>
+       </datasource>
+        
+        <% end %>
+
+  </datasources>
+
+</datasources-configuration>

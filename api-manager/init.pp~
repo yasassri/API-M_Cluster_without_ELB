@@ -1,0 +1,88 @@
+$script_base_dir  = inline_template("<%= Dir.pwd %>")
+
+class params {
+
+# General Settings
+
+# File Locations
+  $deployment_target = '/home/yasassri/Desktop/QA_Resources/puppet/DEPLOY'
+
+# DB Configurations
+
+# MySQL configuration details
+  $mysql_server         = 'localhost'
+  $mysql_port           = '3306'
+  $max_connections      = '100000'
+  $max_active           = '150'
+  $max_wait             = '360000'
+
+# Database details
+
+#Registry
+  $registry_db_name	= 'REGISTRY_DB'
+  $registry_db_username        = 'asuser'
+  $registry_db_password    = 'wso2root'
+
+# user db
+  $users_mgt_db_name       = 'WSO2_USER_DB'
+  $usermgt_db_username		= 'asuser'
+  $usermgt_db_password   = 'wso2root'
+
+# APIM DB
+  $apim_db_name       = 'WSO2_USER_DB'
+  $apim_db_username		= 'asuser'
+  $apim_db_password   = 'wso2root'
+
+#### KM Related Configs ##########
+
+  $km_clustering = true # to create worker Manager Nodes for Key Manager
+
+  # Manager Nodes Parameters only configure following if clustering true for the KM
+  $km_manager_offsets = ['1','2','3']
+  $km_manager_hosts = ['test.com', 'test2.com']
+  $km_manager_ips = ['100.100.5.112', '100.5.2.3']
+  $km_manager_local_member_ports = ['4000','4001']
+
+  # Worker Nodes parameters
+  $km_worker_offsets = ['1','2','3']
+  $km_worker_hosts = ['test.com', 'test2.com']
+  $km_worker_ips = ['100.100.5.112', '100.5.2.3']
+  $km_worker_local_member_ports = ['4000','4001']
+
+#### GateWay Related Configs ########
+
+  $gw_clustering = true # to create worker Manager Nodes for Key Manager
+
+# Manager Nodes Parameters,,,, only configure following if clustering true for the Gate Way
+  $gw_manager_offsets = ['1','2','3']
+  $gw_manager_hosts = ['test.com', 'test2.com']
+  $gw_manager_ips = ['100.100.5.112', '100.5.2.3']
+  $gw_manager_local_member_ports = ['4000','4001']
+
+# Worker Nodes parameters
+  $gw_worker_offsets = ['1','2','3']
+  $gw_worker_hosts = ['test.com', 'test2.com']
+  $gw_worker_ips = ['100.100.5.112', '100.5.2.3']
+  $gw_worker_local_member_ports = ['4005','4006']
+
+
+#### Publisher Related Configs ########
+
+
+
+
+###### Store Related Configs ########
+
+}
+
+define loop(){
+
+
+}
+
+class myclass inherits params {
+
+
+}
+
+include myclass
