@@ -3,15 +3,15 @@ API-M_Cluster_without_ELB
 
 What the script can do.
 -----------------------
-# The script can spawn an API-M cluster without ELB fronting.
-# Supports both mysql and Oracle DB types.
-# Can copy patches and DB drivers automatically to all the nodes.
+ The script can spawn an API-M cluster without ELB fronting.
+ Supports both mysql and Oracle DB types.
+ Can copy patches and DB drivers automatically to all the nodes.
 
 What the Script can't do.
 -------------------------
 
-# Create new databases.
-# Automatically spawning to remote nodes.
+ Create new databases.
+ Automatically spawning to remote nodes.
 
 How to use the script
 ---------------------
