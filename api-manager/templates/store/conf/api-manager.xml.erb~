@@ -142,7 +142,7 @@
 			<!--
             			Endpoint URLs for the APIs hosted in this API gateway.
         		-->
-                        <GatewayEndpoint>http://<%= @gw_manager_hosts[0] %>:<%= 9763+@gw_manager_offsets[0].to_i %>,https://<%= @gw_manager_hosts[0] %>:<%= 9443+@gw_manager_offsets[0].to_i %></GatewayEndpoint>
+                        <GatewayEndpoint>http://<%= @gw_manager_hosts[0] %>:<%= 8280+@gw_manager_offsets[0].to_i %>,https://<%= @gw_manager_hosts[0] %>:<%= 8243+@gw_manager_offsets[0].to_i %></GatewayEndpoint>
                 </Environment>
         </Environments>
 

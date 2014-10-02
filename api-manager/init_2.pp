@@ -7,7 +7,7 @@ class params {
 # File Locations
   $deployment_target  = '/home/yasassri/Desktop/QA_Resources/puppet/DEPLOY/deploy2'
   $pack_location      = '/home/yasassri/Desktop/soft/WSO2_Products/API_Manager/new'
-  $script_base_dir  = inline_template("<%= Dir.pwd %>") #location will be automatically picked up
+  $script_base_dir    = inline_template("<%= Dir.pwd %>") #location will be automatically picked up
 
 # DB Configurations
   $db_type = "mysql" #add keyword "oracle" or "mysql"
@@ -52,7 +52,6 @@ class params {
 ##################################
 #### KM Related Configs ##########
 
-
   # Manager Nodes Parameters only configure following if clustering true for the KM
   $km_manager_offsets             = ['1']
   $km_manager_hosts               = ['apim.180.km.com']
@@ -69,7 +68,7 @@ class params {
   $gw_manager_local_member_ports = ['4003']
 
 ################################################
-############# Publisher Related Configs ########
+###### Publisher Related Configs ########
 
   $publisher_offsets            = ['3']
   $publisher_hosts              = ['apim.180.publisher.com']
@@ -77,7 +76,7 @@ class params {
   $publisher_local_member_ports = ['4004']
 
 #############################################
-########### Store Related Configs ###########
+######## Store Related Configs ###########
 
   $store_offsets            = ['4']
   $store_hosts              = ['apim.180.store.com']
