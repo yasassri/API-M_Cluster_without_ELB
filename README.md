@@ -1,5 +1,6 @@
 API-M_Cluster_without_ELB
 =========================
+This is API Manager 1.8.0, Minimal cluster, which only consists of two nodes. 
 
 What the script can do.
 -----------------------
